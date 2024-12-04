@@ -2,28 +2,13 @@ module learning;
 
 reg clock, reset;
 
-initial begin
-    clock=0;
-    reset=1;
-    #10 reset=0;
-    
-end
-
-initial begin
-    forever begin
-    
-    #5 clock<=~clock;
-
-    end
-end
-
-initial 
+initial
     begin 
-        $monitor($time, 
-        " Value of signals clock = %b reset = %b", clock,reset);
-        #15 $finish;
-    end
-
+        clock = 0; 
+        reset = 1; 
+        #100 $stop; // This will suspend the simulation at time = 100 
+        #900 $finish; // This will terminate the simulation at time = 1000 
+    end 
 
 endmodule       
     
